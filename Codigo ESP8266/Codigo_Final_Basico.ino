@@ -14,9 +14,9 @@ DallasTemperature sensors(&oneWire);
 
 //************************************************************************************************************************************************************
 // VARIABLES A MODIFICAR:
-const char* ssid = "Personal-F84";                                              // Red wifi
-const char* password = "PERSONAL2024";                                          // Contraseña de la red
-const char* Identificador = "/Manantiales";                                     // Identificador de Planta Transmisora
+const char* ssid = "IDENTIFICADOR DE WIFI";                                      // Red wifi
+const char* password = "PASS DE WIFI";                                          // Contraseña de la red
+const char* Identificador = "/Manantiales";                                     // Identificador por el cual se solicitara la temperatura
 const char* Mensaje1 = "ATENCION! La temperatura en Manantiales supero los: ";  // Mensaje al superar el umbral de 30°
 const char* Mensaje2 = "Temperatura actual en Manantiales: ";                   // Mensaje que devuelve al identificador
 const char* Mensaje3 = "Registro diario: temperatura en Manantiales: ";         // Mensaje diario
@@ -25,7 +25,7 @@ const int horaEnvioDiario = 13;                                                 
 const int minutoEnvioDiario = 10;                                               // Minuto de envío diario
 //************************************************************************************************************************************************************
 
-const char* telegramBotToken = "7168434385:AAEgCuF5owUSaL2qHk-4Pi_rD14Ejo9RDbE"; // Token del Bot de Telegram
+const char* telegramBotToken = " 123456 "; // Token del Bot de Telegram - borrar 123456 -
 
 WiFiClientSecure client;
 UniversalTelegramBot bot(telegramBotToken, client);
@@ -78,7 +78,7 @@ void loop() {
   Serial.println(" ºC");
 
   if (temperatureC > Umbral && !messageSent) {
-    sendTelegramMessage(String(Mensaje1) + String(temperatureC) + " ºC", "-4209297433"); 
+    sendTelegramMessage(String(Mensaje1) + String(temperatureC) + " ºC", "-1234567899");  //CAMBIAR -1234567899 POR EL IDENTIFICADOR DEL CHAT DONDE QUIERAS RECIBIR EL MENSAJE
     messageSent = true;
   } else if (temperatureC <= Umbral) {
     messageSent = false; // Reiniciar el flag si la temperatura vuelve a bajar por debajo de 30°C
@@ -89,7 +89,7 @@ void loop() {
   int currentMinute = timeClient.getMinutes();
   if (currentHour == horaEnvioDiario && currentMinute == minutoEnvioDiario && !dailyMessageSent) {
     float temperatura = getTemperature();
-    sendTelegramMessage(String(Mensaje3) + String(temperatura) + " °C", "-4209297433");
+    sendTelegramMessage(String(Mensaje3) + String(temperatura) + " °C", "-1234567899");
     dailyMessageSent = true;
   } else if (currentHour != horaEnvioDiario || currentMinute != minutoEnvioDiario) {
     dailyMessageSent = false; // Reiniciar el flag para el siguiente día
