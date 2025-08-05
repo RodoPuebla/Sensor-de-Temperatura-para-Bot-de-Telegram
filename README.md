@@ -10,5 +10,7 @@ Yo utilizo el Bot dentro de un grupo para que varias personas podamos consultar 
 
 CAMBIOS:
 
-Para evitar que cuando la temperatura esta muy cerca del umbral y este variando por ejemplo entre 29.9°C y 30°C envie muchas alertas. Al enviar la primer alerta se inicia un contador de 5 minutos
+* Para evitar que cuando la temperatura esta muy cerca del umbral y este variando por ejemplo entre 29.9°C y 30°C envie muchas alertas. Al enviar la primer alerta se inicia un contador de 5 minutos
 esto permite solo recibir una alerta en ese tiempo y ademas va aclarando que cantidad de alertas se van enviando desde que se supero la temperatura por primera vez
+
+* Se añadio la opcion de que te envie todos los dias a modo de registro la temperatura en un horario definido por el usuario (Se aconseja las 12 del medio dia ya que es la hora de mayor temperatura del dia habitualmente)
